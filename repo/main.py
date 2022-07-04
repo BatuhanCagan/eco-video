@@ -11,11 +11,12 @@ def saveFrames():
     videoList = []
     for videos in funcVids:
         video = cv2.VideoCapture(videos)
-        success, image = video.read()
-        while success:
+        while True:
+            success, image = video.read()
+            if not success:
+                break
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             videoList.append(gray)
-            success, image = video.read()
     videoList = np.array(videoList).reshape(-1, gray.shape[0], gray.shape[1], 1)
     print(videoList.shape)
     np.save(outFile, videoList)
