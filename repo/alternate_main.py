@@ -6,10 +6,10 @@ import pandas as pd
 
 def saveFrames():
     csvList = []
-    vids = os.listdir()
+    csvs = os.listdir()
     get = 'csv'
-    funcVid = list(filter(lambda a: any([1 if get in a else 0 for get in get.split(' ')]), vids))
-    for f in funcVid:
+    funcCsv = list(filter(lambda a: any([1 if get in a else 0 for get in get.split(' ')]), csvs))
+    for f in funcCsv:
         fil = pd.read_csv(f)
         for i in range(len(fil)):
             csvList.append(fil.loc[i, "PublicLink"])
