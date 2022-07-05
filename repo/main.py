@@ -1,12 +1,12 @@
 import os
 import numpy as np
 import cv2
+import pandas as pd
 
 
 def saveFrames():
-    vids = os.listdir()
-    get = 'mp4 MOV avi'
-    funcVids = list(filter(lambda a: any([1 if get in a else 0 for get in get.split(' ')]), vids))
+    csvList = pd.read_csv('recordset.csv')
+    funcVids = list(i for i in csvList.iloc[:,1])
     outFile = "frames.npy"
     videoList = []
     for videos in funcVids:
